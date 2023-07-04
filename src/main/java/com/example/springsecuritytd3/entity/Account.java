@@ -19,14 +19,17 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class ApplicationUser implements UserDetails {
+public class Account implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer userId;
     @Column(unique = true)
     private String username;
+    @Column(name = "password")
     private String password;
+    @Column(name = "email")
+    private String email;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -36,13 +39,13 @@ public class ApplicationUser implements UserDetails {
     )
     private Set<Role> authorities;
 
-    public ApplicationUser() {
+    public Account() {
         super();
         authorities = new HashSet<>();
     }
 
 
-    public ApplicationUser(Integer userId, String username, String password, Set<Role> authorities) {
+    public Account(Integer userId, String username, String password, Set<Role> authorities) {
         super();
         this.userId = userId;
         this.username = username;
@@ -114,3 +117,13 @@ public class ApplicationUser implements UserDetails {
     }
 
 }
+//implement UserDetails của Spring Security,
+// giúp xác định thông tin người dùng và quyền hạn.
+//Các phương thức được triển khai trong giao diện UserDetails bao gồm:
+//getAuthorities(): Trả về danh sách các quyền (GrantedAuthority) mà người dùng được cấp.
+//getPassword(): Trả về mật khẩu của người dùng.
+//getUsername(): Trả về tên đăng nhập của người dùng.
+//isAccountNonExpired(): Xác định xem tài khoản người dùng có hết hạn hay không.
+//isAccountNonLocked(): Xác định xem tài khoản người dùng có bị khóa hay không.
+//isCredentialsNonExpired(): Xác định xem thông tin đăng nhập của người dùng có hết hạn hay không.
+//isEnabled(): Xác định xem tài khoản người dùng có được kích hoạt hay không

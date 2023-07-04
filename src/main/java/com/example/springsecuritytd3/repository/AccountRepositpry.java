@@ -1,12 +1,12 @@
 package com.example.springsecuritytd3.repository;
 
-import com.example.springsecuritytd3.entity.ApplicationUser;
+import com.example.springsecuritytd3.entity.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<ApplicationUser, Integer> {
-    Optional<ApplicationUser> findByUsername(String username);
+public interface AccountRepositpry extends JpaRepository<Account, Integer> {
+    Optional<Account> findByUsername(String username);
 }

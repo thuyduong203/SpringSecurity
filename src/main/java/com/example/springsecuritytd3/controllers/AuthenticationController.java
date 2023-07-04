@@ -2,7 +2,7 @@ package com.example.springsecuritytd3.controllers;
 
 import com.example.springsecuritytd3.dto.LoginResponseDTO;
 import com.example.springsecuritytd3.dto.RegistrationDTO;
-import com.example.springsecuritytd3.entity.ApplicationUser;
+import com.example.springsecuritytd3.entity.Account;
 import com.example.springsecuritytd3.services.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,7 +20,7 @@ public class AuthenticationController {
     private AuthenticationService authenticationService;
 
     @PostMapping("/register")
-    public ApplicationUser registerUser(@RequestBody RegistrationDTO body) {
+    public Account registerUser(@RequestBody RegistrationDTO body) {
         return authenticationService.registerUser(body);
     }
 

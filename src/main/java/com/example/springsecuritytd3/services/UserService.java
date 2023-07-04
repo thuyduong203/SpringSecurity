@@ -1,6 +1,6 @@
 package com.example.springsecuritytd3.services;
 
-import com.example.springsecuritytd3.repository.UserRepository;
+import com.example.springsecuritytd3.repository.AccountRepositpry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,7 +15,7 @@ public class UserService implements UserDetailsService {
     private PasswordEncoder encoder;
 
     @Autowired
-    private UserRepository userRepository;
+    private AccountRepositpry userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

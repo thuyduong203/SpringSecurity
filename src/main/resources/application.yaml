@@ -1,6 +1,15 @@
 spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 426116584613-l63jp99ae1c1vu2r8mc57eij8c4ts04e.apps.googleusercontent.com
+            client-secret: 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
+            scope: profile, email
+            redirect-uri: http://localhost:8080/success
   datasource:
-    url: jdbc:mysql://localhost:3306/jwt_security3
+    url: jdbc:mysql://localhost:3306/spring_security_315
     username: root
     password: 12123
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -12,3 +21,6 @@ spring:
       hibernate:
         format_sql: true
     database: mysql
+#spring.security.oauth2.client.registration.google.client-id=426116584613-as0vdhdic3snijra54p2b4990q7vvo24.apps.googleusercontent.com
+#spring.security.oauth2.client.registration.google.client-secret=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
+#spring.security.oauth2.client.registration.google.scope=profile,email

@@ -2,10 +2,10 @@ package com.example.springsecuritytd3.services;
 
 import com.example.springsecuritytd3.dto.LoginResponseDTO;
 import com.example.springsecuritytd3.dto.RegistrationDTO;
-import com.example.springsecuritytd3.entity.ApplicationUser;
+import com.example.springsecuritytd3.entity.Account;
 import com.example.springsecuritytd3.entity.Role;
 import com.example.springsecuritytd3.repository.RoleRepository;
-import com.example.springsecuritytd3.repository.UserRepository;
+import com.example.springsecuritytd3.repository.AccountRepositpry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,7 +23,7 @@ import java.util.Set;
 public class AuthenticationService {
 
     @Autowired
-    private UserRepository userRepository;
+    private AccountRepositpry userRepository;
 
     @Autowired
     private RoleRepository roleRepository;
@@ -37,7 +37,7 @@ public class AuthenticationService {
     @Autowired
     private TokenService tokenService;
 
-    public ApplicationUser registerUser(RegistrationDTO registrationDTO) {
+    public Account registerUser(RegistrationDTO registrationDTO) {
 
         String encodedPassword = passwordEncoder.encode(registrationDTO.getPassword());
         Role userRole = roleRepository.findById(registrationDTO.getRoleId()).get();
@@ -46,7 +46,7 @@ public class AuthenticationService {
 
         authorities.add(userRole);
 
-        return userRepository.save(new ApplicationUser(0, registrationDTO.getUsername(), encodedPassword, authorities));
+        return userRepository.save(new Account(0, registrationDTO.getUsername(), encodedPassword, authorities));
     }
 
     public LoginResponseDTO loginUser(String username, String password) {
